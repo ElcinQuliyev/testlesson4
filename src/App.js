@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { Navigate, Route, Routes } from "react-router-dom";
+import React from "react";
+import Posts from "./moduls/Posts";
+import Todos from "./moduls/Todos";
+import Loging from "./moduls/Login/Loging";
+import Navbar from "./components/Navbar";
+import { ROUTES } from "./router";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <Routes>
+        {/* ancaq routern icerisine yazilir  */}
+        <Route path="" element={<Navigate to="/login" />} />
+        <Route path={ROUTES.post} element={<Posts />} />
+        <Route path={ROUTES.todo} element={<Todos />} />
+        <Route path={ROUTES.login} element={<Loging />} />
+      </Routes>
+    </>
   );
 }
 
